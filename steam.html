@@ -22,7 +22,7 @@ body {
 </div>
 
 <script>
-fetch("https://steamstat.us/api")
+fetch("https://api.allorigins.win/raw?url=https://steamstat.us/api")
   .then(res => res.json())
   .then(data => {
     const s = data.services;
@@ -32,6 +32,9 @@ fetch("https://steamstat.us/api")
       Login: <span class="${s.SteamClient === 'normal' ? 'ok' : 'ng'}">${s.SteamClient}</span>
     `;
     document.getElementById("status").innerHTML = html;
+  })
+  .catch(() => {
+    document.getElementById("status").innerHTML = "取得失敗";
   });
 </script>
 </body>
